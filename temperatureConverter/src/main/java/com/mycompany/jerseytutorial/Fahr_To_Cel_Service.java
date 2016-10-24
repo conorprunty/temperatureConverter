@@ -5,28 +5,32 @@
  */
 package com.mycompany.jerseytutorial;
 
+import com.google.gson.Gson;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 /**
  *
  * @author conorprunty
  */
-@Path("/fahr2cel")
+@Path("/converter")
 public class Fahr_To_Cel_Service {
 
     @GET
-    @Path("/{param}")
-    public Response FahrToCelConversion(@PathParam("param") String input) {
+    @Path("/f2cservice")
+    @Produces("application/json")
+    public Response FahrToCelConversion(@Context UriInfo info) {
+        Gson gson = new Gson();
+
+        String fahrenheit = info.getQueryParameters().getFirst("fahrenheit");
         Converter c = new Converter();
+        String result = String.format(("%.2f"), (c.fahrToCel(Double.parseDouble(fahrenheit))));
 
-        Double userInput = Double.parseDouble(input);
-        double ansOut = c.fahrToCel(userInput);
-        String formatAnsOut = String.format("%.2f", ansOut);
+        return Response.status(200).entity(gson.toJson(result)).build();
 
-        String output = input + " Fahrenheit is "+ formatAnsOut + " in Celsius";
-        return Response.status(200).entity(output).build();
     }
 }

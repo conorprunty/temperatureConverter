@@ -1,10 +1,19 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
-    <head>
-        <title>Start Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
     <body>
-        <h1>Hello World!</h1>
+        <form action="http://localhost:8080/api/converter/f2cservice" method="get">
+            Enter Fahrenheit amount to be converted to Celsius: <br> 
+            <input type="text" name="fahrenheit" value="25">
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+        <br>
+        <br>
+        <form action="http://localhost:8080/api/converter/c2fservice" method="get">
+            Enter Celsius amount to be converted to Fahrenheit <br> 
+            <input type="text" name="celsius" value="25">
+            <br>
+            <input type="submit" value="Submit">
+        </form>
     </body>
 </html>
