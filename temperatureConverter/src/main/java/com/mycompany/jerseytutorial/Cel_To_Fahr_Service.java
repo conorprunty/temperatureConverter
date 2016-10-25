@@ -30,7 +30,13 @@ public class Cel_To_Fahr_Service {
         Converter c = new Converter();
         String result = String.format(("%.2f"), (c.celToFahr(Double.parseDouble(celsius))));
 
-        return Response.status(200).entity(gson.toJson(result)).build();
+        if (result.isEmpty()) {
+            return Response.status(200)
+                    .entity("You left the number blank")
+                    .build();
+        } else {
+            return Response.status(200).entity("The Fahrenheit equivalent of " + celsius + " is " + gson.toJson(result)).build();
+        }
 
     }
 }

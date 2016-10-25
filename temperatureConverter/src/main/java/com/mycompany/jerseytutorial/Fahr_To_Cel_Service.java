@@ -33,15 +33,21 @@ public class Fahr_To_Cel_Service {
         Converter c = new Converter();
         String result = String.format(("%.2f"), (c.fahrToCel(Double.parseDouble(fahrenheit))));
 
-        return Response.status(200).entity(gson.toJson(result)).build();
+        if (fahrenheit.isEmpty()) {
+            return Response.status(200)
+                    .entity("You left the number blank")
+                    .build();
+        } else {
+            return Response.status(200).entity("The Celsius equivalent of " + fahrenheit + " is " + gson.toJson(result)).build();
+        }
 
     }
-    
-    @POST
-    @Path("/echo")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response post(String entity){
-       return Response.status(200).entity(entity).build();
-    }
+//    
+//    @POST
+//    @Path("/echo")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Response post(String entity){
+//       return Response.status(200).entity(entity).build();
+//    }
 }
