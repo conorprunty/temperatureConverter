@@ -2,4 +2,5 @@ com/mycompany/jerseytutorial/Fahr_To_Cel_Service.class
 com/mycompany/jerseytutorial/Tester.class
 com/mycompany/jerseytutorial/Cel_To_Fahr_Service.class
 com/mycompany/jerseytutorial/GetClient.class
+com/mycompany/jerseytutorial/PostTest.class
 com/mycompany/jerseytutorial/Converter.class
