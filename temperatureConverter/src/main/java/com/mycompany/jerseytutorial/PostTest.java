@@ -24,7 +24,8 @@ public class PostTest {
 
             WebResource webResource = client.resource(url);
 
-            String input = "{\"band\":\"Metallica\",\"title\":\"Fade To Black\"}";
+            //String input = "{\"band\":\"Metallica\",\"title\":\"Fade To Black\"}";
+            String input = "{\"name\":\"Joe Bloggs\",\"city\":\"Dublin\"}";
 
             ClientResponse response = webResource.type("application/json")
                     .post(ClientResponse.class, input);
